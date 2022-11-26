@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext, useState } from "react";
-import img from "../../media/undraw_Business_deal_re_up4u.png";
+import img from "../../media/headerimgdf.png";
 
 import {
   BoltIcon,
@@ -41,17 +41,18 @@ const Home = () => {
 
   return (
     <div>
-      <section class="overflow-hidden bg-white sm:grid sm:grid-cols-2 sm:items-center">
+      <section class="overflow-hidden sm:grid sm:grid-cols-2 sm:items-center">
         <div class="p-8 md:p-12 lg:px-16 lg:py-24">
           <div class="mx-auto max-w-xl text-center sm:text-left">
-            <h2 class="text-2xl font-bold text-gray-900 md:text-3xl">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit
+            <h2 class="text-8xl font-bold text-white md:text-6xl uppercase text-transparent bg-clip-text bg-gradient-to-r to-[#ee7724] via-[#dd3675] from-[#b44593]">
+              Discover Rare Artworks By World Class Artists
             </h2>
 
             <p class="hidden text-gray-500 md:mt-4 md:block">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas tempus
-              tellus etiam sed. Quam a scelerisque amet ullamcorper eu enim et fermentum,
-              augue. Aliquet amet volutpat quisque ut interdum tincidunt duis.
+              Profile picture (PFP) non-fungible tokens (NFTs) have dominated the weird
+              wide world of digital collectibles. Generative avatar projects became
+              astoundingly popular in 2021, and their significance has only increased as
+              the NFT ecosystem has grown.
             </p>
 
             <div class="mt-4 md:mt-8">
@@ -63,7 +64,7 @@ const Home = () => {
         <img
           alt="Violin"
           src={img}
-          class="h-full w-full object-cover sm:h-[calc(100%_-_2rem)] sm:self-end sm:rounded-tl-[30px] md:h-[calc(100%_-_4rem)] md:rounded-tl-[60px]"
+          class="h-100 w-100 object-cover sm:h-[calc(100%_-_2rem)] sm:self-end sm:rounded-tl-[30px] md:h-[calc(100%_-_4rem)] md:rounded-tl-[60px]"
         />
       </section>
 

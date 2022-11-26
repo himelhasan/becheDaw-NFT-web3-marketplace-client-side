@@ -1,21 +1,66 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../media/siteicon.png";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const Register = () => {
+  const { registerWithEmail, modifyProfile } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/updateProfile";
+
+  const [err, setErr] = useState({
+    general: "",
+  });
+
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      select: {},
+    },
+  });
+
   const onSubmit = (data) => {
     console.log(data);
-    const email = data.email;
+    const name = data.name;
+    const userEmail = data.email;
     const pass = data.password;
-    console.log(email);
-    console.log(pass);
+    const userPhoto = data.userPhoto;
+    const userRole = data.userRole;
+
+    const userInfo = {
+      displayName: name,
+      photoURL: userPhoto,
+    };
+
+    console.log(userInfo);
+    registerWithEmail(userEmail, pass)
+      .then((result) => {
+        const user = result.user;
+
+        if (user) {
+          updateUserProfile(userInfo);
+          navigate(from, { replace: true });
+        }
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErr({ ...err, general: errorMessage });
+      });
+  };
+
+  const updateUserProfile = (userInfo) => {
+    modifyProfile(userInfo)
+      .then((res) => {})
+      .catch((error) => {
+        setErr({ ...err, general: error });
+      });
   };
 
   return (
@@ -36,14 +81,54 @@ const Register = () => {
                         <p class="mb-4">Please Register your account</p>
                         <div class="mb-4">
                           <input
-                            {...register("email", {
-                              required: "Please enter your email address",
+                            {...register("name", {
+                              required: "Please enter your name",
                             })}
                             type="text"
                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                            placeholder="Email"
+                            placeholder="Your Name"
                           />
                         </div>
+
+                        <div class="mb-4">
+                          <input
+                            {...register("email", {
+                              required: "Please enter your email address",
+                            })}
+                            type="email"
+                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            placeholder="Your Email"
+                          />
+                        </div>
+
+                        <div class="mb-4">
+                          <input
+                            {...register("userPhoto", {
+                              required: "Please enter your profile photo link",
+                            })}
+                            type="url"
+                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            placeholder="Your User Photo"
+                          />
+                        </div>
+
+                        <div class="mb-4">
+                          <select
+                            {...register("userRole", {
+                              required: "Please choose your user role",
+                            })}
+                            className=" form-control block w-full pl-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                          >
+                            <option className="text-gray-700 " value="buyer">
+                              Buyer
+                            </option>
+                            <option className="text-gray-700 " value="seller">
+                              Seller
+                            </option>
+                          </select>
+                          {/*  */}
+                        </div>
+
                         <div class="mb-4">
                           <input
                             {...register(
@@ -53,7 +138,7 @@ const Register = () => {
                             )}
                             type="password"
                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                            placeholder="Password"
+                            placeholder="Your Password"
                           />
                         </div>
                         <div class="text-center pt-1 mb-12 pb-1">
@@ -62,8 +147,9 @@ const Register = () => {
                             value="Register Your Account"
                             class="bg-gradient-to-r to-[#ee7724] via-[#dd3675] from-[#b44593]  inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                           />
+                          <p className="text-red-600 ">{err.general}</p>
 
-                          {errors.exampleRequired && <span>This field is required</span>}
+                          {errors.email && <span>This field is required</span>}
                         </div>
                         <div class="flex items-center justify-between pb-6">
                           <div class="flex items-center justify-between pb-6">

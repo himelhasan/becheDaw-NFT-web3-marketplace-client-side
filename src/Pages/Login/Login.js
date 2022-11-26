@@ -33,8 +33,11 @@ const Login = () => {
     emailLogin(email, pass)
       .then((userCredential) => {
         const user = userCredential.user;
-        navigate(from, { replace: true });
-        setErr({ ...err, general: "" });
+        console.log(user);
+        if (user) {
+          navigate(from, { replace: true });
+          setErr({ ...err, general: "" });
+        }
       })
       .catch((error) => {
         setErr({ ...err, general: error });
@@ -46,8 +49,10 @@ const Login = () => {
     gmailLogin()
       .then((res) => {
         const user = res.user;
-        setErr({ ...err, general: "" });
-        navigate(from, { replace: true });
+        if (user) {
+          setErr({ ...err, general: "" });
+          navigate(from, { replace: true });
+        }
       })
       .catch((error) => {
         setErr({ ...err, general: error });

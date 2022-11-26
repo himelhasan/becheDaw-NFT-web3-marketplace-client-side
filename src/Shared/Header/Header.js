@@ -24,7 +24,7 @@ const Header = () => {
   const navigation = [
     { name: "Dashboard", to: "#", current: true },
     { name: "Team", to: "#", current: false },
-    { name: "Projects", to: "#", current: false },
+    { name: "Collections", to: "/collections", current: false },
     { name: "Calendar", to: "#", current: false },
   ];
 
@@ -192,7 +192,7 @@ const Header = () => {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {navigation.map((item) => (
-                <Disclosure.Button
+                <Link
                   key={item.name}
                   as="a"
                   to={item.to}
@@ -205,7 +205,7 @@ const Header = () => {
                   aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
-                </Disclosure.Button>
+                </Link>
               ))}
             </div>
           </Disclosure.Panel>
