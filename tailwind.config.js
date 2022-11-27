@@ -9,7 +9,8 @@ module.exports = {
           DEFAULT: "#249B8C", // Normal primary color
           dark: "#744210", // Used for hover, active, etc.
           blue: "#070736", // #070736
-          golden: "#D2AE6D",
+          pink: "#FF0062",
+          color: "#0029FF",
         },
       },
     },

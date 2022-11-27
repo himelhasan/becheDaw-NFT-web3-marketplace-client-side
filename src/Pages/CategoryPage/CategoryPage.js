@@ -14,20 +14,23 @@ const CategoryPage = () => {
 
   return (
     <>
-      <section
-        class="overflow-hidden sm:grid sm:grid-cols-2 sm:items-center bg-center bg-cover bg-no-repeat pb-20"
-        style={{ backgroundImage: `url(${banner_img})` }}
-      >
-        <div class="p-8 md:p-12 lg:px-16 lg:py-24 ">
-          <div class="mx-auto max-w-xl text-center sm:text-left">
-            <h2 class="text-2xl md:text-6xl font-semibold text-white">
-              Discover Rare Artworks By World Class Artists
-            </h2>
+      <>
+        <div
+          className="bg-center bg-cover bg-no-repeat "
+          style={{ backgroundImage: `url(${banner_img})` }}
+        >
+          <div className="bg-cover bg-opacity-60 py-32  bg-gradient-to-r from-primary-blue px-5">
+            <div className="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+              <p className="border-none inline-block px-2 bg-primary-pink text-white font-bold">
+                Browse
+              </p>
+              <h1 className=" text-5xl font-bold text-white">{name}</h1>
+            </div>
           </div>
         </div>
-      </section>
+      </>
 
-      <div className="my-20 mx-5 py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
+      <div className="my-20 pb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center mx-5 md:mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         {categoryData.map((product) => (
           <ProductCards product={product} key={product._id}></ProductCards>
         ))}
