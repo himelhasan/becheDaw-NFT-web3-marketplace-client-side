@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layout/MainLayout";
+import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import Collections from "../Pages/Collections/Collections";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home/Home";
@@ -16,15 +17,21 @@ const routes = createBrowserRouter([
       {
         path: "/",
         loader: () => {
-          return fetch(` https://bechedaw-server.vercel.app/category/`);
+          return fetch(`https://bechedaw-server.vercel.app/category/`);
         },
         element: <Home></Home>,
+      },
+      {
+        path: "/category/:id",
+        loader: ({ params }) => {
+          return fetch(`https://bechedaw-server.vercel.app/category/${params.id}`);
+        },
+        element: <CategoryPage />,
       },
       {
         path: "/login",
         element: <Login />,
       },
-
       {
         path: "/register",
         element: <Register />,
