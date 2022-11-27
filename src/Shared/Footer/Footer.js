@@ -13,7 +13,9 @@ const Footer = () => {
               </div>
 
               <p class="max-w-sm mt-2 text-gray-500 dark:text-gray-400">
-                Join 31,000+ other and never miss out on new deals, tips, and more.
+                The world’s first and largest digital marketplace for crypto collectibles
+                and non-fungible tokens (NFTs). Buy, sell, and discover exclusive digital
+                items.
               </p>
 
               <div class="flex mt-6 -mx-2">

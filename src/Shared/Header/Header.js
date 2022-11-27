@@ -35,7 +35,7 @@ const Header = () => {
   return (
     <Disclosure
       as="nav"
-      className="bg-gradient-to-r to-[#ee7724] via-[#dd3675] from-[#b44593]  w-full "
+      className="bg-gradient-to-r to-[#FF0062] from-[#0029FF]  w-full "
     >
       {({ open }) => (
         <>

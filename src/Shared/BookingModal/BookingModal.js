@@ -37,6 +37,7 @@ const BookingModal = ({ product, showModal, setShowModal }) => {
     const bookingPersonEmail = person.email;
     const userPhone = data.userPhone;
     const location = data.location;
+    const orderTime = Date();
 
     const bookingInfo = {
       productName,
@@ -45,6 +46,7 @@ const BookingModal = ({ product, showModal, setShowModal }) => {
       bookingPersonEmail,
       userPhone,
       location,
+      orderTime,
     };
     console.log("bookingInfo", bookingInfo);
     setShowModal(false);
@@ -146,6 +148,7 @@ const BookingModal = ({ product, showModal, setShowModal }) => {
                           required: "Please enter your profile photo link",
                         })}
                         type="tel"
+                        autoComplete="tel"
                         required
                         class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="Your Contact no"
@@ -159,6 +162,7 @@ const BookingModal = ({ product, showModal, setShowModal }) => {
                         })}
                         type="text"
                         required
+                        autoComplete="street-address"
                         class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="Meeting location"
                       />
@@ -167,7 +171,7 @@ const BookingModal = ({ product, showModal, setShowModal }) => {
                       <input
                         type="submit"
                         value="Register Your Account"
-                        class="bg-gradient-to-r to-[#ee7724] via-[#dd3675] from-[#b44593]  inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
+                        class="bg-gradient-to-r to-[#FF0062] from-[#0029FF]  inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                       />
                     </div>
                   </form>

@@ -15,9 +15,9 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        // loader: () => {
-        //   return fetch(`https://n-sage-ten.vercel.app/services/`);
-        // },
+        loader: () => {
+          return fetch(` https://bechedaw-server.vercel.app/category/`);
+        },
         element: <Home></Home>,
       },
       {
@@ -32,7 +32,7 @@ const routes = createBrowserRouter([
       {
         path: "/collections",
         loader: () => {
-          return fetch("http://localhost:5000/allProducts");
+          return fetch("https://bechedaw-server.vercel.app/allProducts");
         },
         element: <Collections />,
       },

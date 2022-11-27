@@ -145,7 +145,7 @@ const Register = () => {
                           <input
                             type="submit"
                             value="Register Your Account"
-                            class="bg-gradient-to-r to-[#ee7724] via-[#dd3675] from-[#b44593]  inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
+                            class="bg-gradient-to-r to-[#FF0062] from-[#0029FF]  inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                           />
                           <p className="text-red-600 ">{err.general}</p>
 
@@ -164,7 +164,7 @@ const Register = () => {
                       </form>
                     </div>
                   </div>
-                  <div class="lg:w-6/12 flex items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none bg-gradient-to-r to-[#ee7724] via-[#dd3675] from-[#b44593] ">
+                  <div class="lg:w-6/12 flex items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none bg-gradient-to-r to-[#FF0062] from-[#0029FF] ">
                     <div class="text-white px-4 py-6 md:p-12 md:mx-6">
                       <h4 class="text-xl font-semibold mb-6">
                         We are more than just a company

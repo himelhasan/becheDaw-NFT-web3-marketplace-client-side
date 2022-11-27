@@ -5,7 +5,7 @@ import ProductCards from "../../Shared/ProductCards/ProductCards";
 
 const Collections = () => {
   const usedProducts = useLoaderData();
-
+  console.log(usedProducts);
   return (
     <div className="my-20 py-20 container mx-auto">
       <h2>GET YOUR DESIRED NFT {usedProducts.length}</h2>
