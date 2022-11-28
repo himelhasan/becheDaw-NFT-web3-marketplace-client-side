@@ -1,18 +1,36 @@
 import React from "react";
+import Btn from "../Btn";
 
-const Orders = ({ person }) => {
+const Orders = ({ book }) => {
+  const {
+    productName,
+    resellingPrice,
+    userPhone,
+    bookingPersonName,
+    bookingPersonEmail,
+    location,
+  } = book;
   return (
-    <div>
-      <table>
-        <tbody>
-          <tr class="odd:bg-white even:bg-slate-50">
-            <td>{person.name}</td>
-            <td>{person.title}</td>
-            <td>{person.email}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <tbody>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="py-4 px-4 text-left font-normal mx-0 text-gray-900">
+          {bookingPersonName}
+        </th>
+        <td class="py-4 px-4 text-left">
+          <a href={`tel:${userPhone}`}>{userPhone}</a>
+        </td>
+        <td class="py-4 px-4 text-left">{bookingPersonEmail}</td>
+        <td class="py-4 px-4 text-left">{location}</td>
+        <td class="py-4 px-4 text-left">{productName}</td>
+        <td class="py-4 px-4 text-left flex gap-1">
+          <Btn className="text-sm px-1 py-0 btn-sm">Pay Now</Btn>
+          <button className="btn btn-sm rounded-none bg-red-500 border-none">
+            Delete
+          </button>
+        </td>
+        {/* <td class="py-4 px-6">{resellingPrice}</td> */}
+      </tr>
+    </tbody>
   );
 };
 

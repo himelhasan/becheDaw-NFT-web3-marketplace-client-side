@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CategoryCard = ({ cat }) => {
-  const { name, cat_img, category_id } = cat;
+  const { _id, name, cat_img, category_id } = cat;
   return (
     <div className="bg-gradient-to-r to-[#FF0062] from-[#0029FF] p-2 ">
       <div class="text-gray-900 hover:text-white max-w-sm bg-white hover:bg-transparent hover:opacity-1  border border-gray-200  shadow-md dark:bg-gray-800 dark:border-gray-700 h-40 flex items-center justify-center">
@@ -14,7 +14,7 @@ const CategoryCard = ({ cat }) => {
           </Link>
 
           <Link
-            to={`/category/${category_id}`}
+            to={`/category/${_id}`}
             class="inline-flex items-center py-2 text-sm font-medium text-center  focus:ring-4 focus:outline-none"
           >
             Read more

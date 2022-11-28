@@ -34,7 +34,9 @@ const ProductCards = ({ product }) => {
       </Link>
       <div class="px-5 py-5">
         <Link to="#">
-          <h5 class="text-xl font-semibold tracking-tight">{productName}</h5>
+          <h5 class="text-xl font-semibold tracking-tight text-slate-100">
+            {productName}
+          </h5>
         </Link>
 
         <div class="flex py-5 justify-between ">
@@ -44,13 +46,13 @@ const ProductCards = ({ product }) => {
               style={{ backgroundImage: `url(${sellerImg})` }}
             ></div>
             <span>
-              <p class="text-sm text-gray-500 dark:text-gray-400">Current Owner</p>
-              <h5 class=" text-md font-medium ">{sellerName}</h5>
+              <p class="text-sm text-gray-400">Current Owner</p>
+              <h5 class="text-md font-medium text-slate-200">{sellerName}</h5>
             </span>
           </div>
           <span className="flex  flex-col items-end">
-            <p className="text-sm text-muted">Reselling Price</p>
-            <p class="text-2xl font-bold">{resellingPrice}ETH</p>
+            <p className="text-sm text-muted text-gray-400">Reselling Price</p>
+            <p class="text-2xl font-bold text-slate-50">{resellingPrice}ETH</p>
           </span>
         </div>
         <div class="flex items-center justify-between pt-2">
@@ -61,7 +63,7 @@ const ProductCards = ({ product }) => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-6 h-6 text-slate-100"
             >
               <path
                 strokeLinecap="round"
@@ -69,7 +71,7 @@ const ProductCards = ({ product }) => {
                 d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
               />
             </svg>
-            <p class="text-sm text-gray-500 dark:text-gray-400">{date}</p>
+            <p class="text-sm text-slate-100">{date}</p>
           </div>
 
           {/* <label

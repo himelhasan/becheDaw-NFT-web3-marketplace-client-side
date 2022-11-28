@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useEffect } from "react";
 import PaymentBox from "../../../Shared/PaymentBox/PaymentBox";
+import toast from "react-hot-toast";
+import Orders from "../../../Shared/Orders/Orders";
 
 const UpdateAccountInfo = () => {
   const {
@@ -25,6 +27,15 @@ const UpdateAccountInfo = () => {
   });
   console.log(user);
   const [category, setCategory] = useState([]);
+  const [booking, setBooking] = useState([]);
+  console.log(category);
+  useEffect(() => {
+    fetch("https://bechedaw-server.vercel.app/booking")
+      .then((res) => res.json())
+      .then((data) => {
+        setBooking(data);
+      });
+  }, []);
 
   useEffect(() => {
     fetch("https://bechedaw-server.vercel.app/category")
@@ -74,7 +85,7 @@ const UpdateAccountInfo = () => {
     const pDescription = data.pDescription;
     const pResellingPrice = data.pResellingPrice;
     const pBuyingPrice = data.pBuyingPrice;
-    const pPostedDate = "";
+    const pPostedDate = new Date();
     const pLocation = data.pLocation;
     const pPurchased_year = data.pPurchased_year;
     const pCategory_id = data.pCategory_id;
@@ -85,7 +96,7 @@ const UpdateAccountInfo = () => {
       description: pDescription,
       resellingPrice: pResellingPrice,
       buyingPrice: pBuyingPrice,
-      postedDate: "",
+      postedDate: pPostedDate,
       booked: false,
       advertised: false,
       location: pLocation,
@@ -100,6 +111,22 @@ const UpdateAccountInfo = () => {
       ],
     };
     console.log(productInfo);
+
+    fetch("https://bechedaw-server.vercel.app/allProducts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(productInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data", data);
+        if (data.acknowledged) {
+          toast.success(`Successfully added ${pName}!`);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
@@ -304,8 +331,8 @@ const UpdateAccountInfo = () => {
                           {category.map((catItem) => (
                             <option
                               className="text-gray-700 "
-                              value={catItem.category_id}
-                              key={catItem.category_id}
+                              value={catItem._id}
+                              key={catItem._id}
                             >
                               {catItem.name}
                             </option>
@@ -403,6 +430,58 @@ const UpdateAccountInfo = () => {
                   </div>
                 </div>
               </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="hidden sm:block" aria-hidden="true">
+        <div className="py-5">
+          <div className="border-t border-gray-200" />
+        </div>
+      </div>
+      <div className="mt-10 sm:mt-0">
+        <div className="md:grid md:grid-cols-3 md:gap-6">
+          <div className="md:col-span-1">
+            <div className="px-4 sm:px-0">
+              <h3 className="text-lg font-medium leading-6 text-gray-900">All Orders</h3>
+              <p className="mt-1 text-sm text-gray-600">
+                Please pay the product to get the product or delete it from your orders
+                list
+              </p>
+            </div>
+          </div>
+          <div className="mt-5 md:col-span-2 md:mt-0">
+            <div className="mt-5 md:col-span-2 md:mt-0">
+              <div class="overflow-x-auto relative">
+                <table class="w-full text-sm text-gray-500 dark:text-gray-400">
+                  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                      <th scope="col" class="py-3 px-4 text-left">
+                        Buyer Name
+                      </th>
+                      <th scope="col" class="py-3 px-4 text-left">
+                        Phone
+                      </th>
+                      <th scope="col" class="py-3 px-4 text-left">
+                        Email
+                      </th>
+                      <th scope="col" class="py-3 px-4 text-left">
+                        Location
+                      </th>
+                      <th scope="col" class="py-3 px-4 text-left">
+                        Price
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        Action
+                      </th>
+                    </tr>
+                  </thead>
+
+                  {booking.map((book) => (
+                    <Orders book={book}></Orders>
+                  ))}
+                </table>
+              </div>
             </div>
           </div>
         </div>

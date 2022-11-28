@@ -40,15 +40,31 @@ const BookingModal = ({ product, showModal, setShowModal }) => {
     const orderTime = Date();
 
     const bookingInfo = {
-      productName,
-      resellingPrice,
-      bookingPersonName,
-      bookingPersonEmail,
-      userPhone,
-      location,
-      orderTime,
+      productName: productName,
+      resellingPrice: resellingPrice,
+      bookingPersonName: bookingPersonName,
+      bookingPersonEmail: bookingPersonEmail,
+      userPhone: userPhone,
+      location: location,
+      orderTime: orderTime,
     };
     console.log("bookingInfo", bookingInfo);
+
+    fetch("https://bechedaw-server.vercel.app/booking", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(bookingInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data", data);
+        if (data.acknowledged) {
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
     setShowModal(false);
     toast.custom((t) => (
       <div

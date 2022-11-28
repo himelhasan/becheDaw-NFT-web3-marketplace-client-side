@@ -29,6 +29,7 @@ const Register = () => {
     console.log(data);
     const name = data.name;
     const userEmail = data.email;
+    const userPhone = data.userPhone;
     const pass = data.password;
     const userPhoto = data.userPhoto;
     const userRole = data.userRole;
@@ -36,13 +37,28 @@ const Register = () => {
     const userInfo = {
       displayName: name,
       photoURL: userPhoto,
+      phoneNumber: userPhone,
+    };
+
+    const userInfoDB = {
+      displayName: name,
+      photoURL: userPhoto,
+      phoneNumber: userPhone,
+      userEmail: userEmail,
+      Address: "",
+      userRole: userRole,
+      paymentMethod: {
+        NameOnCard: "",
+        CardNumber: "",
+        ExpirationDate: "",
+        SecurityCode: "",
+      },
     };
 
     console.log(userInfo);
     registerWithEmail(userEmail, pass)
       .then((result) => {
         const user = result.user;
-
         if (user) {
           updateUserProfile(userInfo);
           navigate(from, { replace: true });
@@ -101,6 +117,16 @@ const Register = () => {
                           />
                         </div>
 
+                        <div class="mb-4">
+                          <input
+                            {...register("userPhone", {
+                              required: "Please enter your profile photo link",
+                            })}
+                            type="url"
+                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            placeholder="Your Phone Number"
+                          />
+                        </div>
                         <div class="mb-4">
                           <input
                             {...register("userPhoto", {
