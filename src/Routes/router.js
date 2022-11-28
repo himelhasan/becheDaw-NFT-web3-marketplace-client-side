@@ -3,6 +3,7 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import MainLayout from "../Layout/MainLayout";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import Collections from "../Pages/Collections/Collections";
+import MyOrders from "../Pages/Dashboard/MyOrders";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -71,7 +72,10 @@ const routes = createBrowserRouter([
         <DashboardLayout></DashboardLayout>
       </PrivateRouter>
     ),
-    children: [{ path: "/dashboard", element: <UpdateAccountInfo></UpdateAccountInfo> }],
+    children: [
+      { path: "/dashboard", element: <UpdateAccountInfo></UpdateAccountInfo> },
+      { path: "/dashboard/myOrders", element: <MyOrders></MyOrders> },
+    ],
   },
 ]);
 

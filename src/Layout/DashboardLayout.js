@@ -6,7 +6,7 @@ const DashboardLayout = () => {
   return (
     <div>
       <Header></Header>
-      <div className="drawer drawer-mobile">
+      <div className="drawer drawer-mobile container mx-auto py-20">
         <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content ">
           <Outlet></Outlet>
