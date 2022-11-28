@@ -7,8 +7,12 @@ import { useEffect } from "react";
 import PaymentBox from "../../../Shared/PaymentBox/PaymentBox";
 import toast from "react-hot-toast";
 import Orders from "../../../Shared/Orders/Orders";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const UpdateAccountInfo = () => {
+  const location = useLocation();
+  const navigate = useNavigate;
+
   const {
     register,
     handleSubmit,
@@ -110,6 +114,9 @@ const UpdateAccountInfo = () => {
         },
       ],
     };
+
+    // const redirectTo = `/category/${pCategory_id}`;
+    const from = `/category/${pCategory_id}` || "/";
     console.log(productInfo);
 
     fetch("https://bechedaw-server.vercel.app/allProducts", {
@@ -120,8 +127,10 @@ const UpdateAccountInfo = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log("data", data);
+
         if (data.acknowledged) {
           toast.success(`Successfully added ${pName}!`);
+          navigate(from, { replace: true });
         }
       })
       .catch((error) => {
