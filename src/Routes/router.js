@@ -26,7 +26,11 @@ const routes = createBrowserRouter([
         loader: ({ params }) => {
           return fetch(`https://bechedaw-server.vercel.app/category/${params.id}`);
         },
-        element: <CategoryPage />,
+        element: (
+          <PrivateRouter>
+            <CategoryPage />{" "}
+          </PrivateRouter>
+        ),
       },
       {
         path: "/login",
@@ -41,7 +45,11 @@ const routes = createBrowserRouter([
         loader: () => {
           return fetch("https://bechedaw-server.vercel.app/allProducts");
         },
-        element: <Collections />,
+        element: (
+          <PrivateRouter>
+            <Collections />
+          </PrivateRouter>
+        ),
       },
 
       {

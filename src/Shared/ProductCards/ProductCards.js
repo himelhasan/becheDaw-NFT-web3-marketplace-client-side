@@ -16,10 +16,10 @@ const ProductCards = ({ product }) => {
     postedDate,
     productName,
     resellingPrice,
-    user,
+    seller,
   } = product;
 
-  const { userEmail, userImg, userName } = user[0];
+  const { sellerEmail, sellerImg, sellerName } = seller[0];
   const [showModal, setShowModal] = useState(false);
 
   const date = format(new Date(`${postedDate}`), "PP");
@@ -41,11 +41,11 @@ const ProductCards = ({ product }) => {
           <div class="flex">
             <div
               className="bg-center bg-origin-content bg-contain	w-12 h-12 mb-2 avatar rounded-full mr-3 border-4"
-              style={{ backgroundImage: `url(${userImg})` }}
+              style={{ backgroundImage: `url(${sellerImg})` }}
             ></div>
             <span>
               <p class="text-sm text-gray-500 dark:text-gray-400">Current Owner</p>
-              <h5 class=" text-md font-medium ">{userName}</h5>
+              <h5 class=" text-md font-medium ">{sellerName}</h5>
             </span>
           </div>
           <span className="flex  flex-col items-end">

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useContext, useState } from "react";
 import img from "../../media/hero.png";
-import bgimg from "../../media/bg.png";
+import bgimg from "../../media/night-landscape-halloween-castle-graves_316839-3623.webp";
 
 import {
   BoltIcon,
@@ -12,9 +12,11 @@ import {
 import { Link } from "react-router-dom";
 import Btn from "../../Shared/Btn";
 import CategoryCard from "../../Shared/CategoryCard/CategoryCard";
+import ProductCards from "../../Shared/ProductCards/ProductCards";
 
 const Home = () => {
   const [category, setCategory] = useState([]);
+  const [adProducts, setAdProducts] = useState([]);
 
   useEffect(() => {
     fetch("https://bechedaw-server.vercel.app/category")
@@ -22,6 +24,15 @@ const Home = () => {
       .then((data) => {
         console.log(data);
         setCategory(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("https://bechedaw-server.vercel.app/advertised")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setAdProducts(data);
       });
   }, []);
 
@@ -54,39 +65,45 @@ const Home = () => {
 
   return (
     <div>
-      <section
-        class="overflow-hidden sm:grid sm:grid-cols-2 sm:items-center bg-center bg-cover bg-no-repeat pb-20"
+      <div
+        className="bg-center bg-cover bg-no-repeat "
         style={{ backgroundImage: `url(${bgimg})` }}
       >
-        <div class="p-8 md:p-12 lg:px-16 lg:py-24 ">
-          <div class="mx-auto max-w-xl text-center sm:text-left">
-            <h2 class="text-2xl md:text-6xl font-semibold text-white">
-              Discover Rare Artworks By World Class Artists
-            </h2>
+        <div className="bg-cover bg-opacity-60 bg-gradient-to-r from-primary-blue px-5">
+          <div className="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+            <section class="overflow-hidden sm:grid sm:grid-cols-2 sm:items-center py-20">
+              <div class="p-8 md:p-12 lg:px-16 lg:py-24 ">
+                <div class="mx-auto max-w-xl text-center sm:text-left">
+                  <h2 class="text-2xl md:text-5xl font-semibold text-slate-50">
+                    Discover Rare Artworks By World Class Artists
+                  </h2>
 
-            <p class="hidden text-slate-50 md:mt-4 md:block">
-              Profile picture (PFP) non-fungible tokens (NFTs) have dominated the weird
-              wide world of digital collectibles. Generative avatar projects became
-              astoundingly popular in 2021, and their significance has only increased as
-              the NFT ecosystem has grown.
-            </p>
+                  <p class="hidden text-slate-50 md:mt-4 md:block">
+                    Profile picture (PFP) non-fungible tokens (NFTs) have dominated the
+                    weird wide world of digital collectibles. Generative avatar projects
+                    became astoundingly popular in 2021, and their significance has only
+                    increased as the NFT ecosystem has grown.
+                  </p>
 
-            <div class="mt-4 md:mt-8">
-              <Btn to="asdsa">Get Started</Btn>
-            </div>
+                  <div class="mt-4 md:mt-8">
+                    <Btn to="asdsa">Get Started</Btn>
+                  </div>
+                </div>
+              </div>
+
+              <img
+                alt="Violin"
+                src={img}
+                class=" w-50 object-cover sm:h-[calc(100%_-_2rem)] sm:self-end sm:rounded-tl-[30px] md:h-[calc(100%_-_4rem)] md:rounded-tl-[60px]"
+              />
+            </section>
           </div>
         </div>
-
-        <img
-          alt="Violin"
-          src={img}
-          class="h-100 w-2/3 object-cover sm:h-[calc(100%_-_2rem)] sm:self-end sm:rounded-tl-[30px] md:h-[calc(100%_-_4rem)] md:rounded-tl-[60px]"
-        />
-      </section>
+      </div>
 
       {/* Categrory cards starts here */}
 
-      <div className="bg-white py-24 sm:py-32 lg:py-40 ">
+      <div className="py-24 sm:py-32 lg:py-40 ">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="sm:text-center">
             <h2 className="text-lg font-semibold leading-8 text-[#ee7724]">
@@ -113,7 +130,7 @@ const Home = () => {
 
       {/* features starts here*/}
 
-      <div className="bg-white py-24 sm:py-32 lg:py-40">
+      <div className=" py-24 sm:py-32 lg:py-40">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="sm:text-center">
             <h2 className="text-lg font-semibold leading-8 text-[#ee7724]">
@@ -157,7 +174,7 @@ const Home = () => {
 
       {/* ADs starts here*/}
 
-      <div className="bg-white py-24 sm:py-32 lg:py-40">
+      <div className=" py-24 sm:py-32 lg:py-40">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="sm:text-center">
             <h2 className="text-lg font-semibold leading-8 text-[#ee7724]">
@@ -173,26 +190,15 @@ const Home = () => {
           </div>
 
           <div className="mt-20 max-w-lg sm:mx-auto md:max-w-none">
-            <div className="grid grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-x-12 md:gap-y-16">
-              {features.map((feature) => (
-                <div
-                  key={feature.name}
-                  className="relative flex flex-col gap-6 sm:flex-row md:flex-col lg:flex-row"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r to-[#FF0062] from-[#0029FF] text-white sm:shrink-0">
-                    <feature.icon className="h-8 w-8" aria-hidden="true" />
-                  </div>
-                  <div className="sm:min-w-0 sm:flex-1">
-                    <p className="text-lg font-semibold leading-8 text-gray-900">
-                      {feature.name}
-                    </p>
-                    <p className="mt-2 text-base leading-7 text-gray-600">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            {adProducts.length > 0 ? (
+              <div className="grid grid-cols-1 gap-y-16 md:grid-cols-3 md:gap-x-12 md:gap-y-16">
+                {adProducts.map((product) => (
+                  <ProductCards product={product} key={product._id}></ProductCards>
+                ))}
+              </div>
+            ) : (
+              <p className="text-black text-center">No products found</p>
+            )}
           </div>
         </div>
       </div>

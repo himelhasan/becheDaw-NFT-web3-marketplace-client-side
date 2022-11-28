@@ -15,10 +15,10 @@ const BookingModal = ({ product, showModal, setShowModal }) => {
     postedDate,
     productName,
     resellingPrice,
-    user,
+    seller,
   } = product;
 
-  const { userEmail, userImg, userName } = user[0];
+  const { sellerEmail, sellerImg, sellerName } = seller[0];
 
   const { user: person } = useContext(AuthContext);
 
@@ -99,7 +99,7 @@ const BookingModal = ({ product, showModal, setShowModal }) => {
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t gap-2 content-center">
                   <h3 className="text-lg font-semibold text-black">
-                    Book your meeting with {userName ? userName : "the owner"}
+                    Book your meeting with {sellerName ? sellerName : "the owner"}
                   </h3>
                   <button
                     className="btn h-12 w-12 rounded-full text-xl"

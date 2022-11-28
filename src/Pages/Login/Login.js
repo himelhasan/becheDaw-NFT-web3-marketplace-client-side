@@ -103,11 +103,9 @@ const Login = () => {
                         </div>
                         <div class="mb-4">
                           <input
-                            {...register(
-                              "password",
-                              { required: "Please enter your password" },
-                              { pattern: /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/ }
-                            )}
+                            {...register("password", {
+                              required: "Please enter your password",
+                            })}
                             type="password"
                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             placeholder="Password"
