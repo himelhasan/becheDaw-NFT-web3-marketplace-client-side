@@ -71,21 +71,21 @@ const Home = () => {
       >
         <div className="bg-cover bg-opacity-60 bg-gradient-to-r from-primary-blue px-5">
           <div className="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-            <section class="overflow-hidden sm:grid sm:grid-cols-2 sm:items-center py-20">
-              <div class="p-8 md:p-12 lg:px-16 lg:py-24 ">
-                <div class="mx-auto max-w-xl text-center sm:text-left">
-                  <h2 class="text-2xl md:text-5xl font-semibold text-slate-50">
+            <section className="overflow-hidden sm:grid sm:grid-cols-2 sm:items-center py-20">
+              <div className="p-8 md:p-12 lg:px-16 lg:py-24 ">
+                <div className="mx-auto max-w-xl text-center sm:text-left">
+                  <h2 className="text-2xl md:text-5xl font-semibold text-slate-50">
                     Discover Rare Artworks By World Class Artists
                   </h2>
 
-                  <p class="hidden text-slate-50 md:mt-4 md:block">
+                  <p className="hidden text-slate-50 md:mt-4 md:block">
                     Profile picture (PFP) non-fungible tokens (NFTs) have dominated the
                     weird wide world of digital collectibles. Generative avatar projects
                     became astoundingly popular in 2021, and their significance has only
                     increased as the NFT ecosystem has grown.
                   </p>
 
-                  <div class="mt-4 md:mt-8">
+                  <div className="mt-4 md:mt-8">
                     <Btn to="asdsa">Get Started</Btn>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ const Home = () => {
               <img
                 alt="Violin"
                 src={img}
-                class=" w-50 object-cover sm:h-[calc(100%_-_2rem)] sm:self-end sm:rounded-tl-[30px] md:h-[calc(100%_-_4rem)] md:rounded-tl-[60px]"
+                className=" w-50 object-cover sm:h-[calc(100%_-_2rem)] sm:self-end sm:rounded-tl-[30px] md:h-[calc(100%_-_4rem)] md:rounded-tl-[60px]"
               />
             </section>
           </div>

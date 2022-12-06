@@ -30,18 +30,19 @@ const AuthProvider = ({ children }) => {
   };
 
   // update the user display name and photoURL
-  const modifyProfile = (user) => {
-    setLoading(true);
-    return updateProfile(auth.currentUser, {
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-    });
+  const modifyProfile = (userInfo) => {
+    // setLoading(true);
+    return updateProfile(auth.currentUser, userInfo);
+
+    // return updateProfile(auth.currentUser, {
+    //   displayName: user.displayName,
+    //   photoURL: user.photoURL,
+    // });
   };
 
   // sign in with email
   const emailLogin = (email, password) => {
     setLoading(true);
-
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -65,11 +66,21 @@ const AuthProvider = ({ children }) => {
   };
 
   // user management
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+  //     if (currentUser == null || currentUser) {
+  //       setUser(currentUser);
+  //     }
+  //     setLoading(false);
+  //   });
+
+  //   return () => unsubscribe();
+  // }, []);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser == null || currentUser) {
-        setUser(currentUser);
-      }
+      console.log("user observing");
+      setUser(currentUser);
       setLoading(false);
     });
 

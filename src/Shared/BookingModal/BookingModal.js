@@ -15,10 +15,10 @@ const BookingModal = ({ product, showModal, setShowModal }) => {
     postedDate,
     productName,
     resellingPrice,
-    seller,
+    sellerEmail,
+    sellerImg,
+    sellerName,
   } = product;
-
-  const { sellerEmail, sellerImg, sellerName } = seller[0];
 
   const { user: person } = useContext(AuthContext);
 
@@ -128,37 +128,37 @@ const BookingModal = ({ product, showModal, setShowModal }) => {
                 <div className="relative p-6 flex-auto">
                   {/*  */}
                   <form onSubmit={handleSubmit(onSubmit)}>
-                    <div class="mb-4">
+                    <div className="mb-4">
                       <input
                         defaultValue={productName}
                         disabled
-                        class="form-control disabled block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        className="form-control disabled block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       />
                     </div>
-                    <div class="mb-4">
+                    <div className="mb-4">
                       <input
                         defaultValue={`${resellingPrice}ETH`}
                         disabled
-                        class="form-control disabled block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        className="form-control disabled block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       />
                     </div>
-                    <div class="mb-4">
+                    <div className="mb-4">
                       <input
                         defaultValue={person?.displayName}
                         disabled
-                        class="form-control disabled block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        className="form-control disabled block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       />
                     </div>
 
-                    <div class="mb-4">
+                    <div className="mb-4">
                       <input
                         defaultValue={person?.email}
                         disabled
-                        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       />
                     </div>
 
-                    <div class="mb-4">
+                    <div className="mb-4">
                       <input
                         {...register("userPhone", {
                           required: "Please enter your profile photo link",
@@ -166,12 +166,12 @@ const BookingModal = ({ product, showModal, setShowModal }) => {
                         type="tel"
                         autoComplete="tel"
                         required
-                        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="Your Contact no"
                       />
                     </div>
 
-                    <div class="mb-4">
+                    <div className="mb-4">
                       <input
                         {...register("location", {
                           required: "Please enter your password",
@@ -179,15 +179,15 @@ const BookingModal = ({ product, showModal, setShowModal }) => {
                         type="text"
                         required
                         autoComplete="street-address"
-                        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="Meeting location"
                       />
                     </div>
-                    <div class="text-center pt-1 mb-2 pb-1">
+                    <div className="text-center pt-1 mb-2 pb-1">
                       <input
                         type="submit"
                         value="Register Your Account"
-                        class="bg-gradient-to-r to-[#FF0062] from-[#0029FF]  inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
+                        className="bg-gradient-to-r to-[#FF0062] from-[#0029FF]  inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                       />
                     </div>
                   </form>

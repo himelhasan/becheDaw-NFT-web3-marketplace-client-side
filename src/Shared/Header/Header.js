@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -11,6 +11,15 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(false);
 
+  const [category, setCategory] = useState([]);
+  useEffect(() => {
+    fetch("https://bechedaw-server.vercel.app/category")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategory(data);
+      });
+  }, []);
+
   const signOut = () => {
     logout()
       .then(() => {
@@ -22,10 +31,8 @@ const Header = () => {
   };
 
   const navigation = [
-    { name: "Dashboard", to: "#", current: true },
-    { name: "Team", to: "#", current: false },
+    { name: "Blog", to: "/blog", current: false },
     { name: "Collections", to: "/collections", current: false },
-    { name: "Calendar", to: "#", current: false },
   ];
 
   function classNames(...classes) {
@@ -86,6 +93,22 @@ const Header = () => {
                         {item.name}
                       </Link>
                     ))}
+
+                    {category.map((catItem) => (
+                      <Link
+                        key={catItem.name}
+                        to={`/category/${catItem._id}`}
+                        className={classNames(
+                          catItem.current
+                            ? "bg-gray-900 text-white"
+                            : "text-slate-50 hover:bg-gray-700 hover:text-white",
+                          "px-3 py-2 rounded-md text-sm font-medium"
+                        )}
+                        aria-current={catItem.current ? "page" : undefined}
+                      >
+                        {catItem.name}
+                      </Link>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -123,7 +146,7 @@ const Header = () => {
                           <Menu.Item>
                             {({ active }) => (
                               <Link
-                                to="/updateProfile"
+                                to="/dashboard/updateProfile"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
@@ -206,6 +229,21 @@ const Header = () => {
                   aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
+                </Link>
+              ))}
+              {category.map((catItem) => (
+                <Link
+                  key={catItem.name}
+                  to={`/category/${catItem._id}`}
+                  className={classNames(
+                    catItem.current
+                      ? "bg-gray-900 text-white"
+                      : "text-slate-50 hover:bg-gray-700 hover:text-white",
+                    "block px-3 py-2 rounded-md text-base font-medium"
+                  )}
+                  aria-current={catItem.current ? "page" : undefined}
+                >
+                  {catItem.name}
                 </Link>
               ))}
             </div>

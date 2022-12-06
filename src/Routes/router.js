@@ -3,13 +3,22 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import MainLayout from "../Layout/MainLayout";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import Collections from "../Pages/Collections/Collections";
+import AddProduct from "../Pages/Dashboard/AddProduct";
+import AllBookings from "../Pages/Dashboard/AllBookings";
+import AllBuyers from "../Pages/Dashboard/AllBuyers";
+import AllSellers from "../Pages/Dashboard/AllSellers";
+import AllUsers from "../Pages/Dashboard/AllUsers";
 import MyOrders from "../Pages/Dashboard/MyOrders";
+import MyProducts from "../Pages/Dashboard/MyProducts";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home/Home";
+import Blog from "../Pages/Blog/Blog";
 import Login from "../Pages/Login/Login";
 import UpdateAccountInfo from "../Pages/MyProfile/UpdateAccountInfo/UpdateAccountInfo";
 import Register from "../Pages/Register/Register";
+import AdminRouter from "./AdminRouter";
 import PrivateRouter from "./PrivateRouter";
+import SellerRouter from "./SellerRouter";
 
 const routes = createBrowserRouter([
   {
@@ -35,6 +44,10 @@ const routes = createBrowserRouter([
         ),
       },
       {
+        path: "/blog",
+        element: <Blog></Blog>,
+      },
+      {
         path: "/login",
         element: <Login />,
       },
@@ -53,15 +66,6 @@ const routes = createBrowserRouter([
           </PrivateRouter>
         ),
       },
-
-      {
-        path: "/updateProfile",
-        element: (
-          <PrivateRouter>
-            <UpdateAccountInfo />
-          </PrivateRouter>
-        ),
-      },
     ],
     errorElement: <ErrorPage></ErrorPage>,
   },
@@ -73,8 +77,54 @@ const routes = createBrowserRouter([
       </PrivateRouter>
     ),
     children: [
-      { path: "/dashboard", element: <UpdateAccountInfo></UpdateAccountInfo> },
-      { path: "/dashboard/myOrders", element: <MyOrders></MyOrders> },
+      { path: "/dashboard", element: <UpdateAccountInfo /> },
+      { path: "/dashboard/myBookings", element: <MyOrders /> },
+      { path: "/dashboard/allBookings", element: <AllBookings /> },
+      { path: "/dashboard/updateProfile", element: <UpdateAccountInfo /> },
+      {
+        path: "/dashboard/addProduct",
+        element: (
+          <SellerRouter>
+            <AddProduct />
+          </SellerRouter>
+        ),
+      },
+      {
+        path: "/dashboard/my-product",
+        element: (
+          <SellerRouter>
+            {" "}
+            <MyProducts />
+          </SellerRouter>
+        ),
+      },
+      {
+        path: "/dashboard/allusers",
+        element: (
+          <AdminRouter>
+            {" "}
+            <AllUsers></AllUsers>
+          </AdminRouter>
+        ),
+      },
+      {
+        path: "/dashboard/all-sellers",
+        element: (
+          <AdminRouter>
+            {" "}
+            <AllSellers></AllSellers>
+          </AdminRouter>
+        ),
+      },
+      {
+        path: "/dashboard/all-buyers",
+        element: (
+          <AdminRouter>
+            {" "}
+            <AllBuyers />
+          </AdminRouter>
+        ),
+      },
     ],
   },
 ]);
