@@ -5,7 +5,7 @@ const CategoryCard = ({ cat }) => {
   const { _id, name, cat_img, category_id } = cat;
   return (
     <div className="bg-gradient-to-r to-[#FF0062] from-[#0029FF] p-2 ">
-      <div className="text-gray-900 hover:text-white max-w-sm bg-white hover:bg-transparent hover:opacity-1  border border-gray-200  shadow-md dark:bg-gray-800 dark:border-gray-700 h-40 flex items-center justify-center">
+      <div className="text-gray-900 hover:text-white max-w-sm bg-white hover:bg-transparent hover:opacity-1  border border-gray-200  shadow-md h-40 flex items-center justify-center">
         <div className="p-5 flex flex-col items-center align-items-center">
           <Link to={`/category/${category_id}`}>
             <h5 className="mb-2 text-2xl font-bold tracking-tight  text-center capitalize">
